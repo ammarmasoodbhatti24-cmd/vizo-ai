@@ -1,0 +1,12 @@
+import streamlit as st
+from transformers import pipeline
+
+st.title("Vizo AI 🤖")
+
+generator = pipeline("text-generation", model="gpt2")
+
+user_input = st.text_input("Ask Vizo:")
+
+if user_input:
+    result = generator(user_input, max_length=100)
+    st.write(result[0]["generated_text"])
